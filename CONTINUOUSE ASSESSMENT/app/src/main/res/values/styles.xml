@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.StudentGradeCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Use MaterialComponents theme so Material widgets inflate correctly -->
+    </style>
+</resources>
