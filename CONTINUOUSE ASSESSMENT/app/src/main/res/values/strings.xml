@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Student Grade Calculator</string>
+    <string name="btn_calculate">Calculate Grade</string>
+    <string name="btn_clear">Clear All Fields</string>
+    <string name="btn_upload">Upload CSV File</string>
+    <string name="btn_template">Download CSV Template</string>
+    <string name="hint_name">Student Full Name</string>
+    <string name="hint_matricule">Matricule Number</string>
+    <string name="hint_course">Course Title</string>
+    <string name="hint_marks">Marks (0 – 100)</string>
+    <string name="label_major">Department / Major</string>
+    <string name="label_preview">Grade Preview</string>
+    <string name="provider_authority">com.example.gradeapp.provider</string>
 </resources>
