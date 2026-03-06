@@ -1,265 +1,494 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_main.xml
+    Professional, iPhone-quality layout for the Student Grade Calculator.
+    Design language: refined minimal — inspired by iOS 17 + Material You.
+    Colour palette: deep navy (#1A1A2E), warm gold (#C8A96E), off-white (#F5F3EF).
+-->
 <ScrollView
- android:id="@+id/scrollView" 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F3EF">
+    android:background="@color/colorBackground"
+    android:fillViewport="true"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
-        <!-- Title Card -->
-        <androidx.cardview.widget.CardView
+        <!-- ════════════════════════════════════════════════════════
+             HERO HEADER  — full-width navy banner
+             ════════════════════════════════════════════════════════ -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="12dp"
-            android:layout_marginBottom="24dp">
+            android:orientation="vertical"
+            android:background="@color/colorPrimary"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="36dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- App label -->
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp"
-                android:background="@android:color/transparent">
+                android:text="GRADE CALC"
+                android:textColor="#99FFFFFF"
+                android:textSize="11sp"
+                android:letterSpacing="0.18"
+                android:layout_marginBottom="6dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Student Grade Calculator"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    android:textColor="#1A1A2E"
-                    android:gravity="center"
-                    android:layout_marginBottom="8dp" />
+            <!-- Main title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student\nGrade Calculator"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="1.1"
+                android:layout_marginBottom="10dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Professional Academic Management"
-                    android:textSize="14sp"
-                    android:textColor="#8A8070"
-                    android:gravity="center" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            <!-- Subtitle -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Academic grading · Bulk CSV · Instant export"
+                android:textColor="#AAFFFFFF"
+                android:textSize="13sp"/>
 
-        <!-- Input Form Card -->
-        <androidx.cardview.widget.CardView
+            <!-- Gold accent divider -->
+            <View
+                android:layout_width="48dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="18dp"
+                android:background="@color/colorAccent"/>
+        </LinearLayout>
+
+        <!-- ════════════════════════════════════════════════════════
+             CONTENT AREA  — cards with 16dp side padding
+             ════════════════════════════════════════════════════════ -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            android:layout_marginBottom="20dp">
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="32dp">
 
-            <LinearLayout
+            <!-- ── SECTION LABEL: File Tools ── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FILE TOOLS"
+                android:textColor="@color/colorAccent"
+                android:textSize="11sp"
+                android:letterSpacing="0.14"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="4dp"/>
+
+            <!-- ════════════════════════════════
+                 FILE TOOLS CARD
+                 ════════════════════════════════ -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp">
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="@color/colorSurface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="📝 Enter Student Record"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="#1A1A2E"
-                    android:layout_marginBottom="12dp" />
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                <TextView
+                    <!-- Row 1: Upload CSV -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnUploadFile"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Upload CSV File"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="false"
+                        app:icon="@android:drawable/ic_menu_upload"
+                        app:iconGravity="textStart"
+                        app:iconPadding="10dp"
+                        app:backgroundTint="@color/colorPrimary"
+                        app:cornerRadius="14dp"
+                        style="@style/Widget.MaterialComponents.Button"/>
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F0EDE8"
+                        android:layout_marginBottom="10dp"/>
+
+                    <!-- Row 2: Download Template -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDownloadTemplate"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="Download CSV Template"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="false"
+                        app:icon="@android:drawable/stat_sys_download"
+                        app:iconGravity="textStart"
+                        app:iconPadding="10dp"
+                        app:strokeColor="@color/colorAccent"
+                        app:strokeWidth="1.5dp"
+                        app:cornerRadius="14dp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <!-- Helper text -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Template saves to your Downloads folder — tap to open"
+                        android:textColor="@color/colorHint"
+                        android:textSize="12sp"
+                        android:layout_marginTop="10dp"
+                        android:drawablePadding="6dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── SECTION LABEL: Student Record ── -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STUDENT RECORD"
+                android:textColor="@color/colorAccent"
+                android:textSize="11sp"
+                android:letterSpacing="0.14"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="4dp"/>
+
+            <!-- ════════════════════════════════
+                 FORM CARD
+                 ════════════════════════════════ -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/colorSurface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Fill all fields to calculate grade automatically"
-                    android:textSize="14sp"
-                    android:textColor="#8A8070"
-                    android:layout_marginBottom="20dp" />
+                    android:orientation="vertical"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingTop="24dp"
+                    android:paddingBottom="8dp">
 
-                <!-- Form Fields -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#C8A96E"
-                    app:hintTextColor="#C8A96E">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etName"
+                    <!-- ① Student Name -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilName"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="14dp"
                         android:hint="Student Full Name"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeColor="@color/colorAccent"
+                        app:hintTextColor="@color/colorPrimary"
+                        app:startIconDrawable="@android:drawable/ic_menu_my_calendar">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#C8A96E"
-                    app:hintTextColor="#C8A96E">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName|textCapWords"
+                            android:textSize="15sp"
+                            android:imeOptions="actionNext"/>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etMatricule"
+                    <!-- ② Matricule -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilMatricule"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Matricule (e.g. FE21A123)"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginBottom="14dp"
+                        android:hint="Matricule Number"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeColor="@color/colorAccent"
+                        app:hintTextColor="@color/colorPrimary"
+                        app:startIconDrawable="@android:drawable/ic_menu_agenda">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#C8A96E"
-                    app:hintTextColor="#C8A96E">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etMatricule"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textCapCharacters"
+                            android:textSize="15sp"
+                            android:imeOptions="actionNext"/>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <Spinner
-                        android:id="@+id/spinnerMajor"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:background="@android:color/transparent" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    <!-- ③ Department label + spinner -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Department / Major"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginStart="4dp"/>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#C8A96E"
-                    app:hintTextColor="#C8A96E">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etCourse"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="14dp"
+                        app:cardBackgroundColor="@color/colorBackground"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="@color/colorAccent"
+                        app:strokeWidth="1.5dp">
+
+                        <Spinner
+                            android:id="@+id/spinnerMajor"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:spinnerMode="dropdown"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- ④ Course Title -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCourse"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="14dp"
                         android:hint="Course Title"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeColor="@color/colorAccent"
+                        app:hintTextColor="@color/colorPrimary"
+                        app:startIconDrawable="@android:drawable/ic_menu_edit">
 
-                <!-- Mark Input -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    app:boxStrokeColor="#C8A96E"
-                    app:hintTextColor="#C8A96E">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCourse"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textCapWords"
+                            android:textSize="15sp"
+                            android:imeOptions="actionNext"/>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etMark"
+                    <!-- ⑤ Marks -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilMark"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Marks (0-100)"
-                        android:inputType="numberDecimal"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginBottom="6dp"
+                        android:hint="Marks (0 – 100)"
+                        app:suffixText="/ 100"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        app:boxStrokeColor="@color/colorAccent"
+                        app:hintTextColor="@color/colorPrimary"
+                        app:startIconDrawable="@android:drawable/ic_menu_sort_by_size">
 
-                <!-- Grade Preview -->
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etMark"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:textSize="15sp"
+                            android:imeOptions="actionDone"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ════════════════════════════════
+                 LIVE GRADE PREVIEW CARD (hidden until mark typed)
+                 ════════════════════════════════ -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/previewCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/colorSurface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:background="#F5F3EF"
-                    android:padding="16dp"
-                    android:layout_marginBottom="20dp"
+                    android:padding="18dp"
                     android:gravity="center_vertical">
 
+                    <!-- Grade badge -->
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1"
-                        android:background="#E8D5A3"
+                        android:id="@+id/tvPreviewGrade"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:gravity="center"
-                        android:text="A"
-                        android:textSize="20sp"
+                        android:textSize="24sp"
                         android:textStyle="bold"
-                        android:textColor="#1A1A2E" />
+                        android:background="@drawable/bg_grade_preview"
+                        android:layout_marginEnd="16dp"
+                        android:text="—"/>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:text="Enter mark above to preview grade"
-                        android:textColor="#8A8070"
-                        android:textSize="14sp"
-                        android:layout_marginStart="12dp" />
-                </LinearLayout>
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Grade Preview"
+                            android:textColor="@color/colorHint"
+                            android:textSize="11sp"
+                            android:letterSpacing="0.08"
+                            android:layout_marginBottom="3dp"/>
+                        <TextView
+                            android:id="@+id/tvPreviewRemark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="—"
+                            android:textColor="@color/colorOnSurface"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
 
-                <!-- Action Buttons -->
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- ════════════════════════════════
+                 ACTION BUTTONS
+                 ════════════════════════════════ -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCalculate"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="10dp"
+                android:text="Calculate Grade"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:letterSpacing="0.02"
+                app:backgroundTint="@color/colorPrimary"
+                app:cornerRadius="16dp"
+                app:icon="@android:drawable/ic_menu_send"
+                app:iconGravity="textStart"
+                app:iconPadding="12dp"
+                style="@style/Widget.MaterialComponents.Button"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClear"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="24dp"
+                android:text="Clear All Fields"
+                android:textSize="14sp"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                app:strokeColor="@color/colorBorder"
+                app:strokeWidth="1.5dp"
+                app:cornerRadius="16dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+            <!-- ════════════════════════════════
+                 RESULT CARD  (hidden until grade is calculated)
+                 ════════════════════════════════ -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/resultCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/colorSurface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="6dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp">
+                    android:orientation="vertical"
+                    android:padding="24dp">
 
-                    <Button
-                        android:id="@+id/btnCalculate"
-                        android:layout_width="0dp"
-                        android:layout_height="56dp"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="12dp"
-                        android:text="Calculate Grade"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-                        app:backgroundTint="#1A3A6E"
-                        style="@style/Widget.MaterialComponents.Button" />
+                    <!-- Result header row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
 
-                    <Button
-                        android:id="@+id/btnClear"
-                        android:layout_width="0dp"
-                        android:layout_height="56dp"
-                        android:layout_weight="1"
-                        android:text="Clear"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                        <View
+                            android:layout_width="4dp"
+                            android:layout_height="24dp"
+                            android:background="@color/colorAccent"
+                            android:layout_marginEnd="12dp"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Student Record"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorOnSurface"/>
+
+                        <!-- Success dot -->
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/bg_dot_green"/>
+                    </LinearLayout>
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/colorBorder"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Result text (monospace rows) -->
+                    <TextView
+                        android:id="@+id/tvResult"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:lineSpacingExtra="8dp"
+                        android:fontFamily="monospace"
+                        android:textColor="@color/colorOnSurface"/>
                 </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <!-- Result Card -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/resultCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="12dp"
-            android:visibility="gone">
+            </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp"
-                android:background="@android:color/transparent">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="🎓 Student Record"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textColor="#2D6A4F"
-                    android:layout_marginBottom="16dp" />
-
-                <TextView
-                    android:id="@+id/tvResult"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="#1A1A2E"
-                    android:lineSpacingExtra="4dp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

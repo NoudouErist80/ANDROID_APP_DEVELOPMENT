@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand colours -->
+    <color name="colorPrimary">#1A1A2E</color>
+    <color name="colorPrimaryDark">#12121F</color>
+    <color name="colorAccent">#C8A96E</color>
+
+    <!-- Surface / background -->
+    <color name="colorBackground">#F5F3EF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorBorder">#E8E4DC</color>
+
+    <!-- Text -->
+    <color name="colorOnSurface">#1A1A2E</color>
+    <color name="colorHint">#9E9B92</color>
+
+    <!-- Status -->
+    <color name="colorError">#B5192B</color>
+    <color name="colorSuccess">#2D6A4F</color>
+
+    <!-- Utility -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Grade badge colours -->
+    <color name="gradeA">#2D6A4F</color>
+    <color name="gradeBp">#163A8E</color>
+    <color name="gradeB">#1A3A6E</color>
+    <color name="gradeCp">#5C3090</color>
+    <color name="gradeC">#7A4AB0</color>
+    <color name="gradeDp">#8A5A00</color>
+    <color name="gradeD">#A06010</color>
+    <color name="gradeE">#C05010</color>
+    <color name="gradeF">#B5192B</color>
+</resources>
